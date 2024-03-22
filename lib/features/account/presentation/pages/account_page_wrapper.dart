@@ -1,4 +1,4 @@
-import 'package:coffee_app/core/presentation/widgets/icon/app_logo.dart';
+import '../../../../core/presentation/widgets/icon/app_logo.dart';
 import 'package:flutter/material.dart';
 
 class AccountPageWrapper extends StatelessWidget {
@@ -10,7 +10,13 @@ class AccountPageWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: AppLogo(appLogoType: AppLogoType.logoOnly),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Accounts'),
+            AppLogo(appLogoType: AppLogoType.logoOnly),
+          ],
+        ),
       ),
     );
   }
