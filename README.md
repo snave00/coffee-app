@@ -1,4 +1,4 @@
-# coffee_app
+# Coffee App by Evanson ☕️
 
 Clean Architecture, Flutter Bloc, get_it DI, go_router, feature-first folder structure
 
