@@ -14,6 +14,7 @@ class AccountPageWrapper extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Accounts'),
+            Text('Test'),
             AppLogo(appLogoType: AppLogoType.logoOnly),
           ],
         ),
