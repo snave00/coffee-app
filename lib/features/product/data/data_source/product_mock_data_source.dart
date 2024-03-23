@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import '../../../../utils/constants/asset_const.dart';
 import '../../../../utils/enums/product_category_enum.dart';
+import '../models/remote_models/product_category_model.dart';
 import '../models/remote_models/product_model.dart';
 
 abstract class ProductMockDataSource {
@@ -12,7 +13,10 @@ abstract class ProductMockDataSource {
     required String productCategoryId,
     required bool isPopular,
   });
+
   Future<ProductModel> getProduct({required String productId});
+
+  Future<List<ProductCategoryModel>> getProductCategories();
 }
 
 class ProductMockDataSourceImpl implements ProductMockDataSource {
@@ -79,10 +83,32 @@ class ProductMockDataSourceImpl implements ProductMockDataSource {
 
     return product;
   }
+
+  @override
+  Future<List<ProductCategoryModel>> getProductCategories() async {
+    final String response = await rootBundle.loadString(
+      AssetConst.productCategoryMockData,
+    );
+
+    // get product categories
+    final productCategories = await Isolate.run(
+      () => getProductCategoriesMockData(response),
+    );
+
+    return productCategories;
+  }
 }
 
 // made it top level function so it can be isolated
 Future<List<ProductModel>> getProductsMockData(String response) async {
   final List<dynamic> parsed = jsonDecode(response);
   return parsed.map((json) => ProductModel.fromJson(json)).toList();
+}
+
+// made it top level function so it can be isolated
+Future<List<ProductCategoryModel>> getProductCategoriesMockData(
+  String response,
+) async {
+  final List<dynamic> parsed = jsonDecode(response);
+  return parsed.map((json) => ProductCategoryModel.fromJson(json)).toList();
 }

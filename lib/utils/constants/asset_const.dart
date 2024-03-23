@@ -31,6 +31,9 @@ class AssetConst {
   static const icAll = '${pngPath}ic_all.png';
 
   // * JSON
-  static const promoMockData = '${jsonPath}promo_mock_data.json';
+
   static const productMockData = '${jsonPath}product_mock_data.json';
+  static const productCategoryMockData =
+      '${jsonPath}product_category_mock_data.json';
+  static const promoMockData = '${jsonPath}promo_mock_data.json';
 }

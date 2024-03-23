@@ -3,8 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/domain/usecases/usecase.dart';
 import '../../../utils/enums/product_category_enum.dart';
+import '../../product/domain/entities/product_category_entity.dart';
 import '../../product/domain/entities/product_entity.dart';
 import '../../product/domain/params/products_params.dart';
+import '../../product/domain/usecases/get_product_categories_usecase.dart';
 import '../../product/domain/usecases/get_products_usecase.dart';
 import '../../promos/domain/entities/promo_entity.dart';
 import '../../promos/domain/usecases/get_promos_usecase.dart';
@@ -13,21 +15,26 @@ part 'home_cubit.freezed.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
+  final GetProductCategoriesUseCase getProductCategoriesUseCase;
   final GetProductsUseCase getProductsUseCase;
   final GetPromosUseCase getPromosUseCase;
 
   HomeCubit({
+    required this.getProductCategoriesUseCase,
     required this.getProductsUseCase,
     required this.getPromosUseCase,
   }) : super(HomeState(
+          homeProductCategoriesStatus: HomeProductCategoriesStatus.initial,
           homeProductsStatus: HomeProductsStatus.initial,
           homePromosStatus: HomePromosStatus.initial,
+          productCategories: [],
           products: [],
           promos: [],
         ));
 
   void init() async {
     // don't put await so both will load at the same time
+    await _getProductCategories();
     _getProducts();
     _getPromos();
   }
@@ -80,6 +87,38 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
     );
+  }
+
+  Future<void> _getProductCategories() async {
+    _loadingProductCategories();
+    final result = await getProductCategoriesUseCase.call(NoParams());
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          homeProductCategoriesStatus: HomeProductCategoriesStatus.failure,
+          errorMessage: failure.errorMessage,
+        ),
+      ),
+      (success) {
+        emit(
+          state.copyWith(
+            homeProductCategoriesStatus:
+                HomeProductCategoriesStatus.getProductCategoriesSuccess,
+            productCategories: success,
+            errorMessage: '',
+          ),
+        );
+      },
+    );
+  }
+
+  void _loadingProductCategories() {
+    emit(state.copyWith(
+      homeProductCategoriesStatus:
+          HomeProductCategoriesStatus.getProductCategoriesLoading,
+      successMessage: '',
+      errorMessage: '',
+    ));
   }
 
   void _loadingProducts() {

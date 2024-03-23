@@ -7,6 +7,7 @@ import '../../features/home/cubit/home_cubit.dart';
 import '../../features/product/data/data_source/product_mock_data_source.dart';
 import '../../features/product/data/repositories/product_repo_impl.dart';
 import '../../features/product/domain/repositories/product_repo.dart';
+import '../../features/product/domain/usecases/get_product_categories_usecase.dart';
 import '../../features/product/domain/usecases/get_product_usecase.dart';
 import '../../features/product/domain/usecases/get_products_usecase.dart';
 import '../../features/promos/data/data_source/promo_mock_data_source.dart';
@@ -22,6 +23,7 @@ Future<void> init() async {
   sl.registerFactory(() => UserCubit());
   sl.registerFactory(
     () => HomeCubit(
+      getProductCategoriesUseCase: sl(),
       getProductsUseCase: sl(),
       getPromosUseCase: sl(),
     ),
@@ -31,6 +33,7 @@ Future<void> init() async {
   // product
   sl.registerFactory(() => GetProductUseCase(productRepo: sl()));
   sl.registerFactory(() => GetProductsUseCase(productRepo: sl()));
+  sl.registerFactory(() => GetProductCategoriesUseCase(productRepo: sl()));
 
   // promo
   sl.registerFactory(() => GetPromosUseCase(promoRepo: sl()));
