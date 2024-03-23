@@ -2,7 +2,7 @@ class StringConst {
   StringConst._();
 
   // * Shared
-  static const String appName = 'EvansTemplate';
+  static const String appName = 'Kapetito';
   static const String appVersion = 'v1.0.11.pre';
   static const String defaultIsarName = 'backup_data_v1';
   static const String isarVersion = 'v1.00';
@@ -27,7 +27,7 @@ class StringConst {
   static const String deleted = 'Deleted';
   static const String viewAll = 'View all';
   static const String search = 'Search';
-  static const String searchForDishes = 'Search for dishes & restaurants...';
+  static const String searchCoffee = 'Search Coffee...';
 
   // * Common Text
   static const String loading = 'Loading...';
@@ -45,7 +45,7 @@ class StringConst {
   static const String youreAlreadyInDevMode = 'You\'re already in dev mode';
   static const String and = 'and';
   static const String pro = 'Pro';
-  static const String goodMorning = 'Good morning!';
+  static const String goodMorning = 'Good morning';
 
   static const String zeroCurrency = '0.00';
   static const String zero = '0';
@@ -59,7 +59,6 @@ class StringConst {
   static const String emptyStateIcon4 = '📖';
   static const String emptyStateIcon5 = '🤷‍♂️';
   static const String emptyStateIcon6 = '🤔';
-  static const String noRestaurantsFound = 'No restaurants found';
   static const String noPromosFound = 'No promos found';
   static const String noProductsFound = 'No products found';
 
@@ -77,7 +76,7 @@ class StringConst {
   static const String account = 'Account';
 
   // * Home
-  static const String restaurantsYouMayLike = 'Restaurants you may like';
+  static const String popular = 'Popular';
   static const String promos = 'Promos';
   static const String balance = 'Balance';
   static const String points = 'Points';

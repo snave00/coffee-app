@@ -1,0 +1,22 @@
+[
+    {
+        "productCategoryId": "hot_coffee",
+        "productCategoryName": "Hot Coffee",
+        "productCategoryDesc": ""
+    },
+    {
+        "productCategoryId": "iced_coffee",
+        "productCategoryName": "Iced Coffee",
+        "productCategoryDesc": ""
+    },
+    {
+        "productCategoryId": "pasta",
+        "productCategoryName": "Pasta",
+        "productCategoryDesc": ""
+    },
+    {
+        "productCategoryId": "bread",
+        "productCategoryName": "Bread",
+        "productCategoryDesc": ""
+    }
+]

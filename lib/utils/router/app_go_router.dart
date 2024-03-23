@@ -8,8 +8,6 @@ import '../../features/auth/presentation/pages/sign_up/sign_up_page_wrapper.dart
 import '../../features/cart/presentation/pages/cart_page_wrapper.dart';
 import '../../features/home/presentation/pages/home_page_wrapper.dart';
 import '../../features/initial/presentation/pages/initial_page_wrapper.dart';
-import '../../features/messages/presentation/pages/messages_page_wrapper.dart';
-import '../../features/store/presentation/pages/store_detail_page_wrapper.dart';
 import '../../features/welcome/presentation/pages/welcome_page_wrapper.dart';
 import '../enums/enums.dart';
 import 'router_const.dart';
@@ -30,9 +28,6 @@ class AppGoRouter {
   );
   static final _shellNavigatorCartKey = GlobalKey<NavigatorState>(
     debugLabel: 'cart_key',
-  );
-  static final _shellNavigatorMessagesKey = GlobalKey<NavigatorState>(
-    debugLabel: 'messages_key',
   );
   static final _shellNavigatorAccountKey = GlobalKey<NavigatorState>(
     debugLabel: 'account_key',
@@ -81,20 +76,6 @@ class AppGoRouter {
 
       // * statefulshellroute for bottom nav bar
       _buildStatefulShellRoute(),
-
-      GoRoute(
-        path: Pages.storeDetail.routePath,
-        name: Pages.storeDetail.routeName,
-        // * use the _rootNavigatorKey if u need full screen which doesn't need bottom nav bar
-        // - use specific shell branch key if need bottom nav or..
-        // - by default if no key was placed, it will have a bottom nav
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (ctx, state) {
-          final storeId = state.uri.queryParameters[RouterConst.storeId] ?? '';
-
-          return StoreDetailPageWrapper(storeId: storeId);
-        },
-      ),
     ],
   );
 
@@ -115,7 +96,6 @@ class AppGoRouter {
         _buildHomeBranch(),
         _buildActivityBranch(),
         _buildCartBranch(),
-        _buildMessagesBranch(),
         _buildAccountBranch(),
       ],
     );
@@ -163,22 +143,6 @@ class AppGoRouter {
           name: Pages.cart.routeName,
           pageBuilder: (context, state) => const NoTransitionPage(
             child: CartPageWrapper(),
-          ),
-        ),
-      ],
-    );
-  }
-
-  static StatefulShellBranch _buildMessagesBranch() {
-    return StatefulShellBranch(
-      navigatorKey: _shellNavigatorMessagesKey,
-      routes: [
-        // top route inside branch
-        GoRoute(
-          path: Pages.messages.routePath,
-          name: Pages.messages.routeName,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: MessagesPageWrapper(),
           ),
         ),
       ],

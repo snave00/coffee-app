@@ -162,11 +162,11 @@ class AppTheme {
       filled: true,
       fillColor: baseTheme.colorScheme.surfaceVariant,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(WidgetBorderRadius.border12),
+        borderRadius: BorderRadius.circular(WidgetBorderRadius.borderXL),
         borderSide: BorderSide.none,
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(WidgetBorderRadius.border12),
+        borderRadius: BorderRadius.circular(WidgetBorderRadius.borderXL),
         borderSide: BorderSide(
           color: baseTheme.colorScheme.primary,
         ),

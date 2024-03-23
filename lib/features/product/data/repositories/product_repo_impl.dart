@@ -19,11 +19,14 @@ class ProductRepoImpl implements ProductRepo {
 
   @override
   Future<Either<Failure, List<ProductEntity>>> getProducts({
-    required String storeId,
+    required String productCategoryId,
+    bool isPopular = false,
   }) async {
     try {
-      final products =
-          await productMockDataSource.getProducts(storeId: storeId);
+      final products = await productMockDataSource.getProducts(
+        productCategoryId: productCategoryId,
+        isPopular: isPopular,
+      );
 
       final productsToEntity =
           products.map((product) => product.toEntity()).toList();
@@ -46,12 +49,10 @@ class ProductRepoImpl implements ProductRepo {
 
   @override
   Future<Either<Failure, ProductEntity>> getProduct({
-    required String storeId,
     required String productId,
   }) async {
     try {
       final product = await productMockDataSource.getProduct(
-        storeId: storeId,
         productId: productId,
       );
 

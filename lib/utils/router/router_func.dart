@@ -46,17 +46,4 @@ class RouterFunc {
       },
     );
   }
-
-  static Future<void> goToStoreDetailPage({
-    required BuildContext context,
-    required String storeId,
-  }) async {
-    final Map<String, dynamic> queryParameters = <String, dynamic>{
-      RouterConst.storeId: storeId,
-    };
-    await context.pushNamed(
-      Pages.storeDetail.routeName,
-      queryParameters: queryParameters,
-    );
-  }
 }

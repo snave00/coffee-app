@@ -67,6 +67,7 @@ flutter:
     # need to specify the specific folder so it will work
     - assets/images/svg/
     - assets/images/png/
+    - assets/images/dummy/
     - assets/configs/
     - assets/json/
 

@@ -39,7 +39,7 @@ class CustomSearchTextFormField extends StatelessWidget {
             color: theme.colorScheme.onPrimaryContainer,
           ),
         ),
-        hintText: StringConst.searchForDishes,
+        hintText: StringConst.searchCoffee,
         hintStyle: AppTheme.getTextFormFieldHintStyle(theme: theme),
       ),
       onFieldSubmitted: onFieldSubmitted,
