@@ -86,14 +86,6 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                   label: StringConst.cart,
                 ),
 
-                // messages
-                _buildNavigationDestinationSVG(
-                  theme: theme,
-                  iconPath: AssetConst.icMessageUnSelected,
-                  selectedIconPath: AssetConst.icMessageSelected,
-                  label: StringConst.messages,
-                ),
-
                 // account
                 _buildNavigationDestinationSVG(
                   theme: theme,

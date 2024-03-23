@@ -149,10 +149,8 @@ class AppLogo extends StatelessWidget {
   }
 
   Widget _buildNameLogo({required ThemeData theme, required bool isDarkMode}) {
-    // const defaultSize = WidgetSize.s140;
     return Row(
       children: [
-        // using text
         SizedBox(
           child: Text(
             StringConst.goodMorning,
@@ -161,7 +159,6 @@ class AppLogo extends StatelessWidget {
             ),
           ),
         ),
-
         if (showProLabel ?? false)
           const Spacing.horizontal(size: SpacingSize.s),
         if (showProLabel ?? false) const ProLabel(),

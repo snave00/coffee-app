@@ -13,12 +13,6 @@ import '../../features/promos/data/data_source/promo_mock_data_source.dart';
 import '../../features/promos/data/repositories/promo_repo_impl.dart';
 import '../../features/promos/domain/repositories/promo_repo.dart';
 import '../../features/promos/domain/usecases/get_promos_usecase.dart';
-import '../../features/store/data/data_source/store_mock_data_source.dart';
-import '../../features/store/data/repositories/store_repo_impl.dart';
-import '../../features/store/domain/repositories/store_repo.dart';
-import '../../features/store/domain/usecases/get_store_usecase.dart';
-import '../../features/store/domain/usecases/get_stores_usecase.dart';
-import '../../features/store/presentation/cubit/cubit/store_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -28,20 +22,12 @@ Future<void> init() async {
   sl.registerFactory(() => UserCubit());
   sl.registerFactory(
     () => HomeCubit(
-      getStoresUseCase: sl(),
+      getProductsUseCase: sl(),
       getPromosUseCase: sl(),
     ),
   );
-  sl.registerFactory(() => StoreCubit(
-        getStoreUseCase: sl(),
-        getProductsUseCase: sl(),
-      ));
 
   // * USECASES
-  // store
-  sl.registerFactory(() => GetStoresUseCase(storeRepo: sl()));
-  sl.registerFactory(() => GetStoreUseCase(storeRepo: sl()));
-
   // product
   sl.registerFactory(() => GetProductUseCase(productRepo: sl()));
   sl.registerFactory(() => GetProductsUseCase(productRepo: sl()));
@@ -50,9 +36,6 @@ Future<void> init() async {
   sl.registerFactory(() => GetPromosUseCase(promoRepo: sl()));
 
   // * REPOSITORIES
-  sl.registerFactory<StoreRepo>(() => StoreRepoImpl(
-        storeMockDataSource: sl(),
-      ));
   sl.registerFactory<PromoRepo>(() => PromoRepoImpl(
         promoMockDataSource: sl(),
       ));
@@ -61,10 +44,7 @@ Future<void> init() async {
       ));
 
   // * DATA SOURCES LOCAL
-  // store mock data
-  sl.registerFactory<StoreMockDataSource>(
-    () => StoreMockDataSourceImpl(),
-  );
+
   sl.registerFactory<PromoMockDataSource>(
     () => PromoMockDataSourceImpl(),
   );

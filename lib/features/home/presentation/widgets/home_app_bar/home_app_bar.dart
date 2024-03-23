@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/presentation/widgets/appbar/custom_app_bar.dart';
-import '../../../../../core/presentation/widgets/icon/app_logo.dart';
+import '../../../../../utils/constants/string_const.dart';
 import '../../../../../utils/constants/widget_const.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,11 +28,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     required BuildContext context,
     required ThemeData theme,
   }) {
-    return const Column(
+    return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(WidgetSize.s8),
-          child: AppLogo(appLogoType: AppLogoType.nameLogo),
+          padding: const EdgeInsets.all(WidgetSize.s8),
+          child: SizedBox(
+            child: Text(
+              '${StringConst.goodMorning}, Evanson',
+              style: theme.textTheme.titleMedium,
+            ),
+          ),
         ),
       ],
     );

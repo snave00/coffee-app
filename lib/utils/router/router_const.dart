@@ -28,7 +28,7 @@ class RouterConst {
   static const shellOrigin = 'shell-origin';
 
   // used for displaying store detail
-  static const storeId = 'store-id';
+  // static const storeId = 'store-id';
 }
 
 enum Pages {
@@ -44,11 +44,7 @@ enum Pages {
   home(routePath: '/home', routeName: 'home'),
   activity(routePath: '/activity', routeName: 'activity'),
   cart(routePath: '/cart', routeName: 'cart'),
-  messages(routePath: '/messages', routeName: 'messages'),
-  account(routePath: '/account', routeName: 'account'),
-
-  // store
-  storeDetail(routePath: '/store-detail', routeName: 'store-detail');
+  account(routePath: '/account', routeName: 'account');
 
   const Pages({
     required this.routePath,

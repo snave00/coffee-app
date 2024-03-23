@@ -19,8 +19,6 @@ class AssetConst {
   static const icActivityUnSelected = '${svgPath}ic_activity_unselected.svg';
   static const icCartSelected = '${svgPath}ic_cart_selected.svg';
   static const icCartUnSelected = '${svgPath}ic_cart_unselected.svg';
-  static const icMessageSelected = '${svgPath}ic_message_selected.svg';
-  static const icMessageUnSelected = '${svgPath}ic_message_unselected.svg';
   static const icAccountSelected = '${svgPath}ic_account_selected.svg';
   static const icAccountUnSelected = '${svgPath}ic_account_unselected.svg';
 
@@ -33,7 +31,6 @@ class AssetConst {
   static const icAll = '${pngPath}ic_all.png';
 
   // * JSON
-  static const storeMockData = '${jsonPath}store_mock_data.json';
   static const promoMockData = '${jsonPath}promo_mock_data.json';
   static const productMockData = '${jsonPath}product_mock_data.json';
 }

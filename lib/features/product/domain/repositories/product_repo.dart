@@ -5,10 +5,10 @@ import '../entities/product_entity.dart';
 
 abstract class ProductRepo {
   Future<Either<Failure, List<ProductEntity>>> getProducts({
-    required String storeId,
+    required String productCategoryId,
+    bool isPopular = false,
   });
   Future<Either<Failure, ProductEntity>> getProduct({
-    required String storeId,
     required String productId,
   });
 }

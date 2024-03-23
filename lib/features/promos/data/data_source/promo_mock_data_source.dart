@@ -18,16 +18,16 @@ class PromoMockDataSourceImpl implements PromoMockDataSource {
     );
 
     // get promos
-    final stores = await Isolate.run(
+    final promos = await Isolate.run(
       () => getPromosMockData(response),
     );
 
-    return stores;
+    return promos;
   }
 }
 
 // made it top level function so it can be isolated
 Future<List<PromoModel>> getPromosMockData(String response) async {
   final List<dynamic> parsed = jsonDecode(response);
-  return parsed.map((storeJson) => PromoModel.fromJson(storeJson)).toList();
+  return parsed.map((promoJson) => PromoModel.fromJson(promoJson)).toList();
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/presentation/widgets/gesture/hide_keyboard_on_tap.dart';
 import '../../../../core/presentation/widgets/pull_refresh/custom_pull_refresh.dart';
 import '../../../../core/presentation/widgets/spacing/spacing.dart';
+import '../../cubit/home_cubit.dart';
 import '../widgets/home_app_bar/home_app_bar.dart';
-import '../widgets/home_balance/home_balance.dart';
+import '../widgets/home_popular_product/home_popular_products.dart';
 import '../widgets/home_promo.dart/home_promos.dart';
 import '../widgets/home_search/home_search.dart';
 import '../widgets/home_services/home_services.dart';
-import '../widgets/home_store/home_stores.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
         body: SafeArea(
           child: CustomPullRefresh(
             onRefresh: () async {
-              return await Future.delayed(const Duration(seconds: 1));
+              return context.read<HomeCubit>().init();
             },
             child: const CustomScrollView(
               slivers: [
@@ -29,16 +30,12 @@ class HomePage extends StatelessWidget {
                 HomeSearch(),
                 Spacing.vertical(size: SpacingSize.l, isSliver: true),
 
-                // services
+                // categories
                 HomeServices(),
                 Spacing.vertical(size: SpacingSize.l, isSliver: true),
 
-                // balance & points
-                HomeBalance(),
-                Spacing.vertical(size: SpacingSize.l, isSliver: true),
-
-                // stores
-                HomeStores(),
+                // popular products
+                HomePopularProducts(),
                 Spacing.vertical(size: SpacingSize.l, isSliver: true),
 
                 // promos

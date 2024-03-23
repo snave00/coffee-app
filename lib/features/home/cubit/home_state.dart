@@ -3,19 +3,19 @@ part of 'home_cubit.dart';
 @freezed
 class HomeState with _$HomeState {
   factory HomeState({
-    required HomeStoreStatus homeStoreStatus,
+    required HomeProductsStatus homeProductsStatus,
     required HomePromosStatus homePromosStatus,
-    required List<StoreEntity> stores,
+    required List<ProductEntity> products,
     required List<PromoEntity> promos,
     final String? successMessage,
     final String? errorMessage,
   }) = _HomeState;
 }
 
-enum HomeStoreStatus {
+enum HomeProductsStatus {
   initial,
-  getStoresLoading,
-  getStoresSuccess,
+  getProductsLoading,
+  getProductsSuccess,
   failure,
 }
 

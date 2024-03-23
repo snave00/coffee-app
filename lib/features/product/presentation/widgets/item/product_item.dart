@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/presentation/widgets/button/add_to_cart_icon_button.dart';
 import '../../../../../core/presentation/widgets/button/bouncing_button.dart';
-import '../../../../../core/presentation/widgets/image/custom_cached_network_image.dart';
 import '../../../../../core/presentation/widgets/spacing/spacing.dart';
 import '../../../../../utils/constants/widget_const.dart';
 import '../../../domain/entities/product_entity.dart';
 
+enum ProductItemLayout {
+  horizontal,
+  vertical,
+}
+
 class ProductItem extends StatelessWidget {
   final ProductEntity product;
+  final ProductItemLayout productItemLayout;
   final void Function()? onTap;
   final void Function()? onAddTap;
 
   const ProductItem({
     super.key,
     required this.product,
+    required this.productItemLayout,
     this.onTap,
     this.onAddTap,
   });
@@ -27,6 +33,54 @@ class ProductItem extends StatelessWidget {
   }
 
   Widget _buildItem({required ThemeData theme}) {
+    if (_isHorizontal()) {
+      return _buildHorizontalLayout(theme: theme);
+    }
+
+    return _buildVerticalItem(theme: theme);
+  }
+
+  Widget _buildHorizontalLayout({required ThemeData theme}) {
+    return SizedBox(
+      width: WidgetSize.s180,
+      child: Stack(
+        children: [
+          BouncingButton(
+            onTap: onTap,
+            child: Column(
+              children: [
+                // image
+                _buildImage(),
+                const Spacing.vertical(size: SpacingSize.s),
+
+                // product name
+                _buildTitle(theme: theme),
+
+                // desc
+                _buildDesc(theme: theme),
+                const Spacing.vertical(size: SpacingSize.xs),
+
+                // price
+                _buildPrice(theme: theme),
+                const Spacing.vertical(size: SpacingSize.s),
+              ],
+            ),
+          ),
+
+          // add button
+          Positioned(
+            top: WidgetSize.s100,
+            right: WidgetPadding.paddingXS,
+            child: AddToCartIconButton(
+              onTap: onAddTap,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildVerticalItem({required ThemeData theme}) {
     return Stack(
       children: [
         BouncingButton(
@@ -43,6 +97,10 @@ class ProductItem extends StatelessWidget {
 
               // product name
               _buildTitle(theme: theme),
+
+              // desc
+              _buildDesc(theme: theme),
+              const Spacing.vertical(size: SpacingSize.xs),
 
               // price
               _buildPrice(theme: theme),
@@ -71,9 +129,13 @@ class ProductItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           WidgetBorderRadius.border12,
         ),
-        child: CustomCachedNetworkImage(
-          imageUrl: product.productImage,
+        child: Image.asset(
+          product.productImage,
+          fit: BoxFit.cover,
         ),
+        // child: CustomCachedNetworkImage(
+        //   imageUrl: product.productImage,
+        // ),
       ),
     );
   }
@@ -87,6 +149,25 @@ class ProductItem extends StatelessWidget {
             product.productName,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.start,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesc({required ThemeData theme}) {
+    return Row(
+      children: [
+        const Spacing.horizontal(size: SpacingSize.xs),
+        Expanded(
+          child: Text(
+            product.productDesc,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: Colors.grey,
+            ),
             textAlign: TextAlign.start,
           ),
         ),
@@ -111,5 +192,9 @@ class ProductItem extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  bool _isHorizontal() {
+    return productItemLayout == ProductItemLayout.horizontal;
   }
 }
