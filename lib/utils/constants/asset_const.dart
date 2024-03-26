@@ -24,14 +24,9 @@ class AssetConst {
 
   // * PNG
   static const icAppLogoOnlyPng = '${pngPath}ic_app_logo_only.png';
-  static const icFood = '${pngPath}ic_food.png';
-  static const icCourier = '${pngPath}ic_courier.png';
-  static const icMart = '${pngPath}ic_mart.png';
-  static const icCar = '${pngPath}ic_car.png';
   static const icAll = '${pngPath}ic_all.png';
 
   // * JSON
-
   static const productMockData = '${jsonPath}product_mock_data.json';
   static const productCategoryMockData =
       '${jsonPath}product_category_mock_data.json';

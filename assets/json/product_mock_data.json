@@ -2,37 +2,6 @@
     {
         "productId": "HOT001",
         "productCategoryId": "hot_coffee",
-        "productName": "Caffe Americano",
-        "productDesc": "Espresso diluted with hot water.",
-        "productPrice": "90.00",
-        "productImage": "assets/images/dummy/caffe_americano.jpeg",
-        "isAvailable": true,
-        "isFavorite": false,
-        "isPopular": false,
-        "customizations": [
-            {
-                "option": "Size",
-                "choices": [
-                    "Small",
-                    "Regular",
-                    "Large"
-                ]
-            },
-            {
-                "option": "Sugar",
-                "choices": [
-                    "None",
-                    "Light",
-                    "Regular",
-                    "Extra"
-                ]
-            }
-        ],
-        "rating": "4.2"
-    },
-    {
-        "productId": "HOT002",
-        "productCategoryId": "hot_coffee",
         "productName": "Cappuccino",
         "productDesc": "Espresso with equal parts of steamed milk and milk foam.",
         "productPrice": "90.00",
@@ -62,7 +31,7 @@
         "rating": "4.5"
     },
     {
-        "productId": "HOT003",
+        "productId": "HOT002",
         "productCategoryId": "hot_coffee",
         "productName": "Caffe Latte",
         "productDesc": "Espresso with steamed milk and a small amount of foam.",
@@ -91,6 +60,37 @@
             }
         ],
         "rating": "4.3"
+    },
+    {
+        "productId": "HOT003",
+        "productCategoryId": "hot_coffee",
+        "productName": "Caffe Americano",
+        "productDesc": "Espresso diluted with hot water.",
+        "productPrice": "90.00",
+        "productImage": "assets/images/dummy/caffe_americano.jpeg",
+        "isAvailable": true,
+        "isFavorite": false,
+        "isPopular": true,
+        "customizations": [
+            {
+                "option": "Size",
+                "choices": [
+                    "Small",
+                    "Regular",
+                    "Large"
+                ]
+            },
+            {
+                "option": "Sugar",
+                "choices": [
+                    "None",
+                    "Light",
+                    "Regular",
+                    "Extra"
+                ]
+            }
+        ],
+        "rating": "4.2"
     },
     {
         "productId": "ICE001",
@@ -123,34 +123,6 @@
     {
         "productId": "ICE002",
         "productCategoryId": "iced_coffee",
-        "productName": "Cold Brew",
-        "productDesc": "Chilled coffee brewed with cold water for a smooth and rich flavor.",
-        "productPrice": "80.00",
-        "productImage": "assets/images/dummy/cold_brew.jpeg",
-        "isAvailable": true,
-        "isFavorite": false,
-        "isPopular": false,
-        "customizations": [
-            {
-                "option": "Size",
-                "choices": [
-                    "Regular",
-                    "Large"
-                ]
-            },
-            {
-                "option": "Sugar",
-                "choices": [
-                    "Regular",
-                    "Extra"
-                ]
-            }
-        ],
-        "rating": "4.4"
-    },
-    {
-        "productId": "ICE003",
-        "productCategoryId": "iced_coffee",
         "productName": "Iced Mocha",
         "productDesc": "Espresso with chocolate syrup, milk, and whipped cream over ice.",
         "productPrice": "80.00",
@@ -175,6 +147,34 @@
             }
         ],
         "rating": "4.7"
+    },
+    {
+        "productId": "ICE003",
+        "productCategoryId": "iced_coffee",
+        "productName": "Cold Brew",
+        "productDesc": "Chilled coffee brewed with cold water for a smooth and rich flavor.",
+        "productPrice": "80.00",
+        "productImage": "assets/images/dummy/cold_brew.jpeg",
+        "isAvailable": true,
+        "isFavorite": false,
+        "isPopular": true,
+        "customizations": [
+            {
+                "option": "Size",
+                "choices": [
+                    "Regular",
+                    "Large"
+                ]
+            },
+            {
+                "option": "Sugar",
+                "choices": [
+                    "Regular",
+                    "Extra"
+                ]
+            }
+        ],
+        "rating": "4.4"
     },
     {
         "productId": "PASTA001",

@@ -38,7 +38,7 @@ class ProductMockDataSourceImpl implements ProductMockDataSource {
     var productsFiltered = products.where(
       (element) {
         bool displayAllCategories =
-            productCategoryId == ProductCategoryEnum.all.name;
+            productCategoryId == ProductCategoryEnum.all.productCategoryId;
         bool matchCategoryId = element.productCategoryId == productCategoryId;
         bool matchPopularOnly = element.isPopular == true;
 

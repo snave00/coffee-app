@@ -61,6 +61,7 @@ class StringConst {
   static const String emptyStateIcon6 = '🤔';
   static const String noPromosFound = 'No promos found';
   static const String noProductsFound = 'No products found';
+  static const String noCategoriesFound = 'No categories found';
 
   // * Terms & Privacy
   static const String termsPrivacyMessage =
@@ -72,17 +73,15 @@ class StringConst {
   static const String home = 'Home';
   static const String activity = 'Activity';
   static const String cart = 'Cart';
-  static const String messages = 'Messages';
   static const String account = 'Account';
 
   // * Home
   static const String popular = 'Popular';
   static const String promos = 'Promos';
-  static const String balance = 'Balance';
-  static const String points = 'Points';
-  static const String food = 'Food';
-  static const String mart = 'Mart';
-  static const String courier = 'Courier';
-  static const String car = 'Car';
+
   static const String all = 'All';
+  static const String hotCoffee = 'Hot coffee';
+  static const String icedCoffee = 'Iced coffee';
+  static const String pasta = 'Pasta';
+  static const String bread = 'Bread';
 }

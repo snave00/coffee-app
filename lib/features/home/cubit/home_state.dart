@@ -9,6 +9,7 @@ class HomeState with _$HomeState {
     required List<ProductCategoryEntity> productCategories,
     required List<ProductEntity> products,
     required List<PromoEntity> promos,
+    required String selectedProductCategoryId,
     final String? successMessage,
     final String? errorMessage,
   }) = _HomeState;

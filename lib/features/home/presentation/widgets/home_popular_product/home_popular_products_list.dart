@@ -43,7 +43,7 @@ class HomePopularProductsList extends StatelessWidget {
     return SizedBox(
       height: WidgetSize.s220,
       child: ListView.separated(
-        separatorBuilder: (context, index) {
+        separatorBuilder: (ctx, index) {
           return const Spacing.horizontal(size: SpacingSize.m);
         },
         scrollDirection: Axis.horizontal,

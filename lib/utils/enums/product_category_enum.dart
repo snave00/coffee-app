@@ -1,11 +1,32 @@
+import '../constants/string_const.dart';
+
 enum ProductCategoryEnum {
-  all(name: 'all'),
-  hotCoffee(name: 'hot_coffee'),
-  icedCoffee(name: 'iced_coffee'),
-  pasta(name: 'pasta'),
-  bread(name: 'bread');
+  all(
+    productCategoryId: 'all',
+    title: StringConst.all,
+  ),
+  hotCoffee(
+    productCategoryId: 'hot_coffee',
+    title: StringConst.hotCoffee,
+  ),
+  icedCoffee(
+    productCategoryId: 'iced_coffee',
+    title: StringConst.icedCoffee,
+  ),
+  pasta(
+    productCategoryId: 'pasta',
+    title: StringConst.pasta,
+  ),
+  bread(
+    productCategoryId: 'bread',
+    title: StringConst.bread,
+  );
 
-  final String name;
+  final String productCategoryId;
+  final String title;
 
-  const ProductCategoryEnum({required this.name});
+  const ProductCategoryEnum({
+    required this.productCategoryId,
+    required this.title,
+  });
 }

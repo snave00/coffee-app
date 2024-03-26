@@ -30,6 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
           productCategories: [],
           products: [],
           promos: [],
+          selectedProductCategoryId: ProductCategoryEnum.all.productCategoryId,
         ));
 
   void init() async {
@@ -39,11 +40,34 @@ class HomeCubit extends Cubit<HomeState> {
     _getPromos();
   }
 
+  Future<void> _getProductCategories() async {
+    _loadingProductCategories();
+    final result = await getProductCategoriesUseCase.call(NoParams());
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          homeProductCategoriesStatus: HomeProductCategoriesStatus.failure,
+          errorMessage: failure.errorMessage,
+        ),
+      ),
+      (success) {
+        emit(
+          state.copyWith(
+            homeProductCategoriesStatus:
+                HomeProductCategoriesStatus.getProductCategoriesSuccess,
+            productCategories: success,
+            errorMessage: '',
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _getProducts() async {
     _loadingProducts();
     final result = await getProductsUseCase.call(
       ProductParams(
-        productCategoryId: ProductCategoryEnum.all.name,
+        productCategoryId: state.selectedProductCategoryId,
         isPopular: true,
       ),
     );
@@ -89,27 +113,15 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<void> _getProductCategories() async {
-    _loadingProductCategories();
-    final result = await getProductCategoriesUseCase.call(NoParams());
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          homeProductCategoriesStatus: HomeProductCategoriesStatus.failure,
-          errorMessage: failure.errorMessage,
-        ),
+  Future<void> selectProductCategory(
+      {required String productCategoryId}) async {
+    emit(
+      state.copyWith(
+        selectedProductCategoryId: productCategoryId,
       ),
-      (success) {
-        emit(
-          state.copyWith(
-            homeProductCategoriesStatus:
-                HomeProductCategoriesStatus.getProductCategoriesSuccess,
-            productCategories: success,
-            errorMessage: '',
-          ),
-        );
-      },
     );
+
+    await _getProducts();
   }
 
   void _loadingProductCategories() {
